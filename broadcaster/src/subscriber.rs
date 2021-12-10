@@ -41,7 +41,7 @@ impl Subscriber {
 
                     match current_slot {
                         Some(value) => {
-                            if received_slot == value {
+                            if received_slot <= value {
                                 continue;
                             }
 
@@ -73,7 +73,9 @@ impl Subscriber {
 
                                 current_slot = Some(received_slot);
                             } else {
-                                eprintln!("Broadcaster was disconnected while was sending transaction");
+                                eprintln!(
+                                    "Broadcaster was disconnected while was sending transaction"
+                                );
                                 continue;
                             }
                         }
