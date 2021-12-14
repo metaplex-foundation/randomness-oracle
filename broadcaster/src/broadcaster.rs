@@ -22,7 +22,10 @@ impl Broadcaster {
         Self { rpc_url, authority }
     }
 
-    pub async fn broadcast(&self, accounts: Vec<(Pubkey, RandomnessOracle)>) -> Result<Vec<Signature>, Box<dyn Error>> {
+    pub async fn broadcast(
+        &self,
+        accounts: Vec<(Pubkey, RandomnessOracle)>,
+    ) -> Result<Vec<Signature>, Box<dyn Error>> {
         let mut signatures = vec![];
         let mut rng = rand::thread_rng();
 
